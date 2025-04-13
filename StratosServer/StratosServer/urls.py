@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Mailing.views import send_email_help_request
+from Mailing.views import SendEmailHelpRequest
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('mail/', send_email_help_request)
+    path('api/mail/', SendEmailHelpRequest.as_view(), name='send_email_help_request'),
 ]
