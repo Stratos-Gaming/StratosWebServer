@@ -1,1 +1,2 @@
-/StratosServerEnv
+# Ignore virtual environment folder
+StratosServer/StratosServerEnv/
