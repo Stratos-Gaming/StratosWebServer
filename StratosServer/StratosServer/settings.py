@@ -15,6 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Instagram API Configuration
+INSTAGRAM_ACCESS_TOKEN = 'EAAXEbHvvssoBO6mEULC5OHw9d4qAKhPVC8WdiTQZBIfqCA11Wy5jlXGimUKKSZARilT2chSYNj3fZAsBKOLIfCBcqHqtwnZBu0GJQzsQS5baATc8aG5q8NtMuS9wWalbEqPIZBfDyaObtxV59uk28vZAJbIarrzd02I52vdUMXoeRj8tRMX1vktrFZABEKoko70wr9yspNZAdYmMZABkns3Js6JT8zz4ZD'  # Replace with your actual access token
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-q$!*s*s(35i%zz7(*rdog5r=837)1!)!ue*_r!&bed3ewto+dq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.74.166.136']
+ALLOWED_HOSTS = ['3.74.166.136','127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000']
 # Application definition
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Mailing',
+    'Apis',
 ]
 
 MIDDLEWARE = [
