@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.utils import timezone
-from datetime import datetime
 from .models import InstagramPost
 import json
 
@@ -19,7 +17,7 @@ def instagram_webhook(request):
             'caption': data.get('caption', ''),
             'media_url': data.get('media_url', ''),  # Video URL
             'img': data.get('img', ''),  # Image thumbnail
-            'timestamp': datetime.fromisoformat(data.get('timestamp', timezone.now().isoformat()))
+            'timestamp': data.get('timestamp', '')  # Store as is
         }
         
         # Create new post
@@ -28,7 +26,7 @@ def instagram_webhook(request):
         return Response({
             'status': 'success',
             'message': 'Post created successfully',
-            'timestamp': post.timestamp.isoformat()
+            'timestamp': post.timestamp
         })
         
     except Exception as e:
@@ -48,7 +46,7 @@ def get_instagram_posts(request):
             'caption': post.caption,
             'media_url': post.media_url,
             'img': post.img,
-            'timestamp': post.timestamp.isoformat()
+            'timestamp': post.timestamp
         } for post in posts]
         
         return Response({
