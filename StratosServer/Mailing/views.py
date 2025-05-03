@@ -11,16 +11,19 @@ class SendEmailHelpRequest(APIView):
 
     def post(self, request, *args, **kwargs):
         email = request.data.get('email')
+        user_name = request.data.get('name', 'utente')  # Default to 'utente' if no name provided
+        
         if not email:
             return Response({'error': 'Email is required'}, status=status.HTTP_400_BAD_REQUEST)
         
-        subject = "Stratos: Richiesta di assistenza per il tuo progetto"
+        subject = "Stratos: Richiesta di chiarimento"
         
         # Context for the template
         context = {
+            'user_name': user_name,
             'documentation_link': '[LINK_DOCUMENTAZIONE]',
             'faq_link': '[LINK_FAQ]',
-            'tutorial_link': '[LINK_TUTORIAL]'
+            'social_link': '[LINK_SOCIAL]'
         }
         
         # Render HTML content
@@ -49,7 +52,7 @@ class SendEmailHelpRequest(APIView):
             
             return Response({
                 'success': True,
-                'message': 'Notifica di assistenza inviata correttamente',
+                'message': 'Notifica inviata correttamente',
                 'mail_sent': mail_sent
             }, status=status.HTTP_200_OK)
         except Exception as e:
