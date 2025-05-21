@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Mailing.views import SendEmailHelpRequest
+from Mailing.views import SendEmailHelpRequest, SendEmailEvent
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/mail/', SendEmailHelpRequest.as_view(), name='send_email_help_request'),
+    path('api/mail/event/', SendEmailEvent.as_view(), name='send_email_event'),
     path('api/', include('Apis.urls')),
 ]
